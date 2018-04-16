@@ -1,6 +1,11 @@
 # igdb_client
 Ruby client interface for IGDB API
 
+## Installation
+```ruby
+$ gem install igdb_client
+```
+
 ## Usage
 The client can be used in one of two ways. Either as an instance or a class.
 They work pretty much in the same manner.
