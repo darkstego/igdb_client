@@ -14,6 +14,8 @@ The structure of queries and results matches the [api documentaion.](https://igd
 
 ##### Instance
 ```ruby
+require 'igdb_client'
+
 # initialize with api_key
 client = IGDB::Client.new "api_key"
 
@@ -39,6 +41,8 @@ results[0].summary
 
 ##### Class Methods
 ```ruby
+require 'igdb_client'
+
 # initialize with api_key
 IGDB::API.api_key = "api_key"
 
