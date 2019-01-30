@@ -4,7 +4,7 @@ require 'ostruct'
 
 module IGDB
    module Connection
-      URL = "https://api-endpoint.igdb.com/"
+      URL = "https://api-v3.igdb.com/"
       HEADER = {"Accept" => "application/json"}
       HEADER_API_KEY_PARAM = "user-key"
 
