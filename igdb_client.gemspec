@@ -1,8 +1,4 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'igdb/version'
-
 Gem::Specification.new do |spec|
   spec.name          = 'igdb_client'
   spec.version       = '4.0.0'
