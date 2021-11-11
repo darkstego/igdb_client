@@ -5,15 +5,15 @@ require 'igdb/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'igdb_client'
-  spec.version       = IGDB::VERSION
+  spec.version       = '4.0.0'
   spec.authors       = ['Abdulla Bubshait']
   spec.email         = ['darkstego@gmail.com']
 
-  spec.summary       = 'Ruby IGDB API.'
+  spec.summary       = 'Ruby IGDB API Client'
   spec.description   = 'A Client for the Internet Game Database'
   spec.homepage      = 'https://github.com/darkstego/igdb_client'
   spec.license       = 'MIT'
 
-  spec.files         = ['README.md', 'lib/igdb_client.rb','lib/igdb/api.rb', 'lib/igdb/connection.rb', 'lib/igdb/client.rb']
+  spec.files         = ['README.md', 'lib/igdb_client.rb']
   spec.require_paths = ['lib']
 end

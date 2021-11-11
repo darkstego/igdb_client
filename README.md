@@ -1,5 +1,5 @@
 # igdb_client
-Ruby client interface for IGDB API
+Ruby client interface for IGDB API. Supports API v4.
 
 ## Installation
 ```ruby
@@ -7,59 +7,37 @@ $ gem install igdb_client
 ```
 
 ## Usage
-The client can be used in one of two ways. Either as an instance or a class.
-They work pretty much in the same manner.
-
-The structure of queries and results matches the [api documentaion.](https://igdb.github.io/api/)
+The structure of queries and results matches the [api documentaion.](https://api-docs.igdb.com/)
+You will need client id and a valid token to access the API. The above link explains how to 
+acquire them. 
 
 ##### Instance
 ```ruby
 require 'igdb_client'
 
-# initialize with api_key
-client = IGDB::Client.new "api_key"
+# initialize with client id and token
+client = IGDB::Client.new("client_id","token") 
 
-# methods match IGDB api endpoints, pass an optional hash as query params
-client.games 1942, {fields: "name"}
+# Endpoint can optionally be provided to change from defaults of 'games'
+other_client = IGDB::Client.new("client_id","token", 'characters') 
 
-# pass multiple ids in an array
-client.games [1942,3344], {fields: "name,release_dates,esrb.synopsis,rating"}
+# Endpoint/token/client_id can be changed on a client
+other_client.endpoint = 'games'
 
-# to run a text search on a resource, put search_ before resource name
-client.search_games "ibb and obb"
+# Use the get method to fetch given the API params
+client.get {fields: "name", limit: 10}
 
-# to count number of resources matched, put count_ before resource name
-client.count_games {"filter[rating][gt]" => 75}
+# Use search method to search
+client.search("ibb and obb", {fields: "name,release_dates,esrb.synopsis,rating"})
 
-# Access retrieved data by using methods matching fields of data
-results = client.platform 2
-results[0].name
-results[0].summary
-```
+# Use id if you want to match by id
+client.id 1942
 
-
-
-##### Class Methods
-```ruby
-require 'igdb_client'
-
-# initialize with api_key
-IGDB::API.api_key = "api_key"
-
-# methods match IGDB api endpoints, pass an optional hash as query params
-IGDB::API.games 1942, {fields: "name"}
-
-# pass multiple ids in an array
-IGDB::API.games [1942,3344], {fields: "name,release_dates,esrb.synopsis,rating"}
-
-# to run a text search on a resource, put search_ before resource name
-IGDB::API.search_games "ibb and obb"
-
-# to count number of resources matched, put count_ before resource name
-IGDB::API.count_games {"filter[rating][gt]" => 75}
+# You can run methods on alternate endpoints by using endpoint as method
+client.character.id 14390
 
 # Access retrieved data by using methods matching fields of data
-results = IGDB::API.platform 2
+results = client.platform.id 2
 results[0].name
 results[0].summary
 ```
