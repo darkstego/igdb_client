@@ -64,7 +64,7 @@ module IGDB
 			response = Net::HTTP.post(URI(url),'')
 			raise "Could not get Access Token for IGDB" unless response.is_a? Net::HTTPSuccess
 			json = JSON.parse(response.body, object_class: OpenStruct)
-			@token_expiration_time = json.expires_in.to_i
+			@token_expiration_time = Time.now + json.expires_in.to_i
 			@access_token = json.access_token
 		end
 	end
